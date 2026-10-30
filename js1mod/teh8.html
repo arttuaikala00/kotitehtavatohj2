@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 8</title>
+</head>
+<body>
+    <div id="tulostus"></div>
+
+    <script>
+        let alku = 0;
+        let loppu = 0;
+        let kVuodet = [];
+
+        function kysy_vuodet() {
+            document.getElementById("tulostus").innerHTML = `
+                <h2>Alkuvuosi:</h2>
+                <input type="text" id="alku">
+                <h2>Loppuvuosi:</h2>
+                <input type="text" id="loppu">
+                <br>
+                <button onclick="karkausvuodet()">Karkausvuodet</button>
+            `;
+        }
+
+        function karkausvuodet() {
+            alku = Number(document.getElementById("alku").value);
+            loppu = Number(document.getElementById("loppu").value);
+
+            for (let i = alku; i <= loppu; i++) {
+                if (karkausvuosi(i)) {
+                    kVuodet.push(i)
+                }
+            }
+
+            let tulostus = "<ul>";
+            for (let i = 0; i < kVuodet.length; i++) {
+                tulostus += `<li>${kVuodet[i]}</li>`;
+            }
+            tulostus += "</ul>";
+            document.getElementById("tulostus").innerHTML = tulostus;
+        }
+        
+        function karkausvuosi(vuosi) {
+            if (vuosi % 400 == 0 || (vuosi % 4 == 0 && vuosi % 100 != 0)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        kysy_vuodet();
+    </script>
+</body>
+</html>

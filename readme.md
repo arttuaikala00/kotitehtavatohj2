@@ -7,10 +7,12 @@ https://users.metropolia.fi/~arttuaik/js1mod/
 Tehdyt tehtävät:
 
 - Tehtävä 2: 2p
+- Tehtävä 3: 3p
 - Tehtävä 5: 3p
+- Tehtävä 8: 3p
 - Tehtävä 10: 5p
 
-**Yhteensä: 10p**
+**Yhteensä: 16p**
 
 
 ### JS-moduuli 3

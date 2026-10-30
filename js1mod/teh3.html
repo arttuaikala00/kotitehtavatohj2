@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 3</title>
+</head>
+<body>
+    <div id="tulostus"></div>
+
+    <script>
+        let luvut = []
+        let i = 1
+
+        function kysy_luku() {
+            document.getElementById("tulostus").innerHTML = `
+                <h2>Anna kolme lukua:</h2>
+                <h3>Luku ${i}:</h3>
+                <input type="number" id="luku">
+                <button onclick="tallenna_luku()">Seuraava</button>
+            `;
+        }
+
+        function tallenna_luku() {
+            let luku = Number(document.getElementById("luku").value);
+            luvut.push(luku)
+            i++;
+
+            if (i > 3) {
+                tulosta();
+                return;
+            } else {
+                kysy_luku();
+            }
+        }
+
+        function tulosta() {
+            let summa = luvut.reduce((a, b) => a + b, 0)
+            let tulo = luvut.reduce((a, b) => a * b, 1)
+            let kArvo = luvut.reduce((a, b) => a + b, 0) / luvut.length
+
+            document.getElementById("tulostus").innerHTML = `
+                <p>Summa: ${summa}</p>
+                <p>Tulo: ${tulo}</p>
+                <p>Keskiarvo: ${kArvo}</p>
+            `;
+        }
+
+        kysy_luku();
+    </script>
+</body>
+</html>
