@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moduuli 3 - Tehtävä 10</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+        th, td {
+            border: 1px solid black;
+            text-align: left;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="ehdokkaat"></div>
+    <div id="tulostus"></div>    
+    
+    <script>
+        function ehdokkaiden_maara() {
+            document.getElementById("tulostus").innerHTML = `
+                <h2>Ehdokkaiden määrä:</h2>
+                <input type="number" id="ehdokkaita">
+                <button onclick="ehdokkaiden_nimet()">Seuraava</button>
+            `;
+        }
+
+        function ehdokkaiden_nimet() {
+            ehdokkaita = Number(document.getElementById("ehdokkaita").value);
+            ehdokkaat = [];
+            i = 0;
+            kysy_nimi();
+        }
+
+        function kysy_nimi() {
+            if (i >= ehdokkaita) {
+                tulostus();
+                aloita_aanestys();
+                return;
+            }
+
+            document.getElementById("tulostus").innerHTML = `
+                <h2>Ehdokkaan ${i + 1} nimi:</h2>
+                <input type="text" id="ehdokas">
+                <button onclick="tallenna_nimi()">Seuraava</button>
+            `;
+        }
+
+        function tallenna_nimi() {
+            let nimi = document.getElementById("ehdokas").value;
+
+            ehdokkaat.push({
+                nimi: nimi,
+                aanet: 0
+            });
+
+            i++;
+            kysy_nimi();
+        }
+
+        function tulostus() {
+            let taulukko = `
+                <table>
+                    <tr>
+                        <th>Nimi</th>
+                        <th>Äänet</th>
+                    </tr>
+            `;
+
+            for (let ehdokas of ehdokkaat) {
+                taulukko += `
+                    <tr>
+                        <td>${ehdokas.nimi}</td>
+                        <td>${ehdokas.aanet}</td>
+                    </tr>
+                `;
+            }
+
+            taulukko += `</table>`;
+            document.getElementById("ehdokkaat").innerHTML = taulukko;
+        };
+
+        function aloita_aanestys() {
+            document.getElementById("tulostus").innerHTML = `
+                <h2>Äänestäjien määrä:</h2>
+                <input type="number" id="aanestajia">
+                <button onclick="aanet()">Seuraava</button>
+            `;
+        }
+
+        function aanet() {
+            aanestajia = Number(document.getElementById("aanestajia").value);
+            i = 0;
+            kysy_aani();
+        }
+
+        function kysy_aani() {
+            if (i >= aanestajia) {
+                ehdokkaat.sort((a, b) => b.aanet - a.aanet);
+                tulostus();
+                tulosta_voittaja();
+                return;
+            }
+
+            document.getElementById("tulostus").innerHTML = `
+                <h2>Äänestäjä ${i + 1} ääni:</h2>
+                <input type="text" id="ehdokas">
+                <button onclick="tallenna_aani()">Seuraava</button>
+            `;
+        }
+
+        function tallenna_aani() {
+            let nimi = document.getElementById("ehdokas").value;
+            ehdokkaat.find(j => j.nimi === nimi).aanet++;
+            i++;
+            kysy_aani();
+        }
+
+        function tulosta_voittaja() {
+            let voittaja = ehdokkaat.reduce((a, b) => a.aanet > b.aanet ? a : b);
+            document.getElementById("tulostus").innerHTML = `
+                <h3>Voittaja on ${voittaja.nimi} ${voittaja.aanet} äänellä.</h3>
+            `;
+        }
+        
+        ehdokkaiden_maara();
+    </script>
+</body>
+</html>

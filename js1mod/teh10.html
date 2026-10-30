@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 10</title>
+</head>
+<body>
+    <h2>Noppien lukumäärä:</h2>
+    <input type="text" id="lMaara">
+    <h2>Haluttu summa:</h2>
+    <input type="text" id="hSumma">
+    <br>
+    <button onclick="laske()">Todennäköisyys</button>
+    <p id="tulos"></p>
+
+    <script>
+        function laske() {
+            let lMaara = Number(document.getElementById("lMaara").value);
+            let hSumma = Number(document.getElementById("hSumma").value);
+            let oikein = 0;
+
+            for (let heittoja = 1; heittoja <= 10000; heittoja++) {
+                let yhteensa = 0;
+                for (let nopat = 1; nopat <= lMaara; nopat++) {
+                    let tulos = Math.floor(Math.random() * 6) + 1;
+                    yhteensa += tulos
+                }
+                if (yhteensa == hSumma) {
+                    oikein++;
+                }
+            }
+
+            document.getElementById("tulos").innerHTML = "Todennäköisyys saada summa " + hSumma + ", " + lMaara + " nopalla on " + oikein / 100 + "%";
+        }
+    </script>
+</body>
+</html>

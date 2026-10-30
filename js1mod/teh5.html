@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 5</title>
+</head>
+<body>
+    <h2>Vuosi:</h2>
+    <input type="text" id="vuosi">
+    <button onclick="karkausvuosi()">Tarkista</button>
+    <p id="tulos"></p>
+
+    <script>
+        function karkausvuosi() {
+            let vuosi = document.getElementById("vuosi").value;
+            if (vuosi % 400 == 0 || (vuosi % 4 == 0 && vuosi % 100 != 0)) {
+                document.getElementById("tulos").innerHTML = vuosi + " on karkausvuosi.";
+            } else {
+                document.getElementById("tulos").innerHTML = vuosi + " ei ole karkausvuosi.";
+                }
+            }
+    </script>
+</body>
+</html>

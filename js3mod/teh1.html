@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moduuli 3 - Tehtävä 1</title>
+</head>
+<body>
+    <div id="tulostus"></div>
+
+    <script>
+        let luvut = []
+        let i = []
+
+        function kysy_luvut() {
+            document.getElementById("tulostus").innerHTML = `
+                <h2>Anna viisi lukua</h2>
+                <h3>Luku ${i + 1}:</h3>
+                <input type="number" id="luku">
+                <button onclick="tallenna_luku()">Seuraava</button>
+            `;
+        }
+
+        function tallenna_luku() {
+            let luku = Number(document.getElementById("luku").value);
+            luvut.push(luku)
+
+            if (i >= 4) {
+                tulosta();
+                return;
+            }
+            
+            i++;
+            kysy_luvut();
+        }
+
+        function tulosta() {
+            let tulostus = []
+
+            for (let i = luvut.length - 1; i >= 0; i--) {
+                tulostus.push(luvut[i]);
+            }
+
+            document.getElementById("tulostus").innerHTML = tulostus.join(", ")
+        }
+
+        kysy_luvut();
+    </script>
+</body>
+</html>
