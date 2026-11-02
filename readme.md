@@ -25,3 +25,15 @@ Tehdyt tehtävät:
 - Tehtävä 10: 8p
 
 **Yhteensä: 10p**
+
+
+### JS-moduuli 4
+
+https://users.metropolia.fi/~arttuaik/js4mod/
+
+Tehdyt tehtävät:
+
+-Tehtävä 8: 5p
+-Tehtävä 14: 6p
+
+**Yhteensä: 11p**
