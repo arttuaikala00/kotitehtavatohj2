@@ -33,7 +33,29 @@ https://users.metropolia.fi/~arttuaik/js4mod/
 
 Tehdyt tehtävät:
 
--Tehtävä 8: 5p
--Tehtävä 14: 6p
+- Tehtävä 8: 5p
+- Tehtävä 14: 6p
 
 **Yhteensä: 11p**
+
+
+### Flask
+
+Tehdyt tehtävät:
+
+- Tehtävä 2: 10p
+
+**Yhteensä: 10p**
+
+
+### JS-moduuli 5
+
+https://users.metropolia.fi/~arttuaik/js5mod/
+
+Tehdyt tehtävät:
+
+- Tehtävä 1: 2p
+- Tehtävä 2: 3p
+- Tehtävä 3: 7p
+
+**Yhteensä: 12p**
